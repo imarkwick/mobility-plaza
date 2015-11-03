@@ -1,1 +1,4 @@
-%p Hi-tops
+- if @categories
+  %ul
+    - @categories.each do |c|
+      %li= c.name
