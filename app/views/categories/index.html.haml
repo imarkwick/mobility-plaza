@@ -1,4 +1,5 @@
 - if @categories
   %ul
     - @categories.each do |c|
-      %li= c.name
+      %li
+        = link_to c.name, category_path(c)
