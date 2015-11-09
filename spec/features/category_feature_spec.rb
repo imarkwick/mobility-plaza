@@ -19,7 +19,5 @@ RSpec.describe 'Categories: ', type: :feature do
       click_link 'Hi-top'
       expect(current_path).to eq category_url
     end
-
   end
-
 end
