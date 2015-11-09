@@ -17,5 +17,10 @@ RSpec.describe Category do
   it 'should return nil when it has no trainers' do
     expect(@category1.trainers).to eq []
   end
+
+  it 'should be able to have trainers associated with it' do
+    trainer1 = @category1.trainers.find_or_create_by(name: 'First Shoe')
+    expect(@category1.trainers).to eq [trainer1]
+  end
 end
 
