@@ -20,11 +20,14 @@ RSpec.describe Trainer do
   end
 
   it 'should have a price' do
-
+    expect(@trainer1.price).to eq nil
+    @trainer1.price = 81.00
+    expect(@trainer1.price).to eq 81.00
   end
 
   it 'should have a link to buy' do
-
+    @trainer1.link = 'https://www.google.co.uk'
+    expect(@trainer1.link).to eq 'https://www.google.co.uk'
   end
 
 end
