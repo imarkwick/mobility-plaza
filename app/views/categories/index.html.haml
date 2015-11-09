@@ -1,7 +1,11 @@
 .homepage
-	=image_tag "logo.png", :class => "logo"
-	- if @categories
-		%ul.trainerCategories
-			- @categories.each do |c|
-				%li
-					= link_to c.name, category_path(c), :class => "trainerCategories-cateogoryName"
+
+  = image_tag "logo.png", :class => "logo"
+
+  - if @categories
+    %ul.trainerCategories
+      - @categories.each do |c|
+        %li
+          = link_to c.name, category_path(c), :class => "trainerCategories-cateogoryName"
+  
+  = link_to 'Browse All Trainers', trainers_path, id: 'all_trainers'
