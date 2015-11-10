@@ -30,4 +30,9 @@ RSpec.describe Trainer do
     expect(@trainer1.link).to eq 'https://www.google.co.uk'
   end
 
+  it 'should have an image' do
+    @trainer1.update(image: File.new("#{Rails.root}/db/images/categories/airmax1.jpg"))
+    expect(@trainer1.image_file_name).to eq 'airmax1.jpg'
+  end
+
 end
