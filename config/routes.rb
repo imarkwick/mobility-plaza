@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :categories
   resources :trainers
+  resources :brands
 
 end
