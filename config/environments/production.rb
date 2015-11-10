@@ -1,4 +1,15 @@
 Rails.application.configure do
+
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['FRESHCREPSBUCKET'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID_FC'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY_FC']
+    },
+    :s3_host_name => 's3-eu-west-1.amazonaws.com'
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
