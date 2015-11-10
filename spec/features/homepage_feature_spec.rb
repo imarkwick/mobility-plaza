@@ -21,6 +21,12 @@ RSpec.describe 'On the homepage: ', type: :feature do
       expect(page).to have_content @trainer.name
     end
 
+    scenario 'all categories are displayed by an image' do
+      @category.update(image: File.new("#{Rails.root}/db/images/categories/designer.jpg"))
+      visit '/'
+      expect(page).to have_css("img[src*='designer.jpg']")
+    end
+
   end
   
 end

@@ -6,6 +6,7 @@
     %ul.trainerCategories
       - @categories.each do |c|
         %li
+          = image_tag (c.image)
           = link_to c.name, category_path(c), :class => "trainerCategories-cateogoryName"
   
   = link_to 'Browse All Trainers', trainers_path, id: 'all_trainers'
