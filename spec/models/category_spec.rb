@@ -22,5 +22,10 @@ RSpec.describe Category do
     trainer1 = @category1.trainers.find_or_create_by(name: 'First Shoe')
     expect(@category1.trainers).to eq [trainer1]
   end
+
+  it 'should have an image' do
+    @category1.image = File.new("#{Rails.root}/db/images/categories/Hi-top.png")
+    expect(@category1.image_file_name).to eq 'Hi-top.png'
+  end
 end
 
