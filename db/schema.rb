@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112120516) do
+ActiveRecord::Schema.define(version: 20151112124242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20151112120516) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "trainer_colours", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "trainer_id"
+    t.integer  "colour_id"
+  end
+
+  add_index "trainer_colours", ["colour_id"], name: "index_trainer_colours_on_colour_id", using: :btree
+  add_index "trainer_colours", ["trainer_id"], name: "index_trainer_colours_on_trainer_id", using: :btree
+
   create_table "trainers", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",         null: false
@@ -52,13 +62,18 @@ ActiveRecord::Schema.define(version: 20151112120516) do
     t.boolean  "published"
     t.integer  "brand_id"
     t.integer  "colour_id"
+    t.integer  "trainer_colour_id"
   end
 
   add_index "trainers", ["brand_id"], name: "index_trainers_on_brand_id", using: :btree
   add_index "trainers", ["category_id"], name: "index_trainers_on_category_id", using: :btree
   add_index "trainers", ["colour_id"], name: "index_trainers_on_colour_id", using: :btree
+  add_index "trainers", ["trainer_colour_id"], name: "index_trainers_on_trainer_colour_id", using: :btree
 
+  add_foreign_key "trainer_colours", "colours"
+  add_foreign_key "trainer_colours", "trainers"
   add_foreign_key "trainers", "brands"
   add_foreign_key "trainers", "categories"
   add_foreign_key "trainers", "colours"
+  add_foreign_key "trainers", "trainer_colours"
 end
