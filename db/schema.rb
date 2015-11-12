@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112132253) do
+ActiveRecord::Schema.define(version: 20151112164403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 20151112132253) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "trainer_id"
+  end
+
+  add_index "images", ["trainer_id"], name: "index_images_on_trainer_id", using: :btree
+
   create_table "trainer_colours", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,6 +82,7 @@ ActiveRecord::Schema.define(version: 20151112132253) do
   add_index "trainers", ["brand_id"], name: "index_trainers_on_brand_id", using: :btree
   add_index "trainers", ["category_id"], name: "index_trainers_on_category_id", using: :btree
 
+  add_foreign_key "images", "trainers"
   add_foreign_key "trainer_colours", "colours"
   add_foreign_key "trainer_colours", "trainers"
   add_foreign_key "trainers", "brands"
