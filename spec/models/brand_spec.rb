@@ -27,4 +27,9 @@ RSpec.describe Brand do
     expect(@brand.trainers.count).to eq 2
   end
 
+  it 'should have a logo' do
+    @brand.logo = File.new("#{Rails.root}/db/images/brands/reebok.png")
+    expect(@brand.logo_file_name).to eq 'reebok.png'
+  end  
+
 end
