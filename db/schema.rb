@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112120251) do
+ActiveRecord::Schema.define(version: 20151112120516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,11 +51,14 @@ ActiveRecord::Schema.define(version: 20151112120251) do
     t.datetime "image_updated_at"
     t.boolean  "published"
     t.integer  "brand_id"
+    t.integer  "colour_id"
   end
 
   add_index "trainers", ["brand_id"], name: "index_trainers_on_brand_id", using: :btree
   add_index "trainers", ["category_id"], name: "index_trainers_on_category_id", using: :btree
+  add_index "trainers", ["colour_id"], name: "index_trainers_on_colour_id", using: :btree
 
   add_foreign_key "trainers", "brands"
   add_foreign_key "trainers", "categories"
+  add_foreign_key "trainers", "colours"
 end
