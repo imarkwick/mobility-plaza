@@ -1,12 +1,14 @@
 .homepage
 
   = image_tag "logo.png", :class => "logo"
-
-  - if @categories
-    %ul.trainerCategories
-      - @categories.each do |c|
-        %li
-          = image_tag (c.image)
-          = link_to c.name, category_path(c), :class => "trainerCategories-cateogoryName"
-  
-  = link_to 'Browse All Trainers', trainers_path, id: 'all_trainers'
+  .row
+    - if @categories
+      %ul.trainerCategories.small-block-grid-1.medium-block-grid-2.large-block-grid-2
+        - @categories.each do |c|
+          %li.trainerCategories-category-box
+            = link_to image_tag(c.image), category_path(c), :class => "trainerCategories-img"
+            %br
+            = link_to c.name, category_path(c), :class => "trainerCategories-cateogoryName"
+    
+    .row
+      = link_to 'Browse All Trainers', trainers_path, id: 'all_trainers'
